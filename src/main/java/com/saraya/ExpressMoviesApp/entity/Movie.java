@@ -6,12 +6,12 @@ import java.util.Date;
 @Table(name = "movie")
 public class Movie {
     @Id
-    @Column
-    private Integer Movie_Id;
+    @Column(unique = true)
+    private int Movie_Id;
     private String Movie_Title;
     private Date Date_Released;
     private Date Movie_Running_Time;
-    @OneToOne(mappedBy = "movie" , fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "movie" , fetch = FetchType.LAZY,cascade = CascadeType.ALL,targetEntity = Movie_Director.class)
     Movie_Director movie_director;
 
     public Movie() {

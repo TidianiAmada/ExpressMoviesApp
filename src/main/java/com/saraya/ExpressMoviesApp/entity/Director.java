@@ -6,15 +6,15 @@ import javax.persistence.*;
 @Table(name = "director")
 public class Director {
     @Id
-    @Column
-    private Integer Director_Id;
+    @Column(unique = true)
+    private int Director_Id;
     private String First_Name;
     private String Last_Name;
     private String Adress;
     private int Contact_Number;
     private String Email;
 
-    @OneToOne(mappedBy = "director",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "director",fetch = FetchType.LAZY,cascade = CascadeType.ALL,targetEntity = Movie_Director.class)
     Movie_Director movie_director;
 
     public Director() {
